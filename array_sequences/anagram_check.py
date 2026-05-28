@@ -4,14 +4,14 @@ def anagram(s1: str, s2: str) -> bool:
 
     if len(s1) != len(s2):
         return False
+    counter = {}
 
-    data = {}
     for char in s1:
-        data[char] = data.get("char", 0) + 1
+        counter[char] = counter.get(char, 0) + 1
     for char in s2:
-        if char not in data:
+        if char not in counter or counter[char] == 0:
             return False
-        data[char] -= 1
+        counter[char] -= 1
     return True
 
 
