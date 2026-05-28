@@ -1,6 +1,6 @@
 def anagram(s1: str, s2: str) -> bool:
-    s1 = "".join([c.lower() for c in s1 if c != " "])
-    s2 = "".join([c.lower() for c in s2 if c != " "])
+    s1 = s1.replace(" ", "").lower()
+    s2 = s2.replace(" ", "").lower()
 
     if len(s1) != len(s2):
         return False
@@ -23,4 +23,5 @@ if __name__ == "__main__":
     assert not anagram("aabbcc", "aabbc")
     assert not anagram("123", "1 2")
     assert anagram("", "")
+    assert anagram("clint eastwood", "old west action")
     print("ALL TEST CASES PASSED")
