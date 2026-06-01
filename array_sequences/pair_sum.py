@@ -16,3 +16,4 @@ def pair_sum(arr: list[int], k: int):
 
 if __name__ == "__main__":
     assert pair_sum([1, 3, 2, 2], 4) == 2
+    print("All Tests Passed")
