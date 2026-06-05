@@ -7,12 +7,16 @@ E.g.
 
 
 def uni_char(s: str) -> bool:
-    seen: list[str] = []
+    seen = set()
     for char in s:
         if char in seen:
             return False
-        seen.append(char)
+        seen.add(char)
     return True
+
+
+def uni_chars(s: str) -> bool:
+    return len(set(s)) == len(s)
 
 
 if __name__ == "__main__":
