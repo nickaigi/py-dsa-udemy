@@ -23,7 +23,7 @@ class LinkedList:
     def append(self, value) -> None:
         """
         Add at the end of the list
-        O(n) linear time
+        O(n) - linear time
         """
         if self.head is None:
             self.head = Node(value)
@@ -35,14 +35,29 @@ class LinkedList:
             curr.next = Node(value)
 
     def prepend(self, value) -> None:
-        """Add at the head of the list"""
-        node = Node(value=value)
-        node.next = self.head
+        """
+        O(1) - linear time
+        Add at the head of the list
+        """
+        first_node = Node(value=value)
+        first_node.next = self.head
+        self.head = first_node
 
     def insert(self, value, index: int) -> None:
-        node = Node(value=value)
-        if self.head is None:
-            self.head = node
+        if index == 0:
+            self.prepend(value)
+        else:
+            if self.head is None:
+                raise ValueError("Index out of bounds")
+            else:
+                last = self.head
+                for i in range(index - 1):
+                    if last.next is None:
+                        raise ValueError("Index out of bounds")
+                    last = last.next
+                new_node = Node(value)
+                new_node.next = last.next
+                last.next = new_node
 
     def delete(self, value) -> None:
         pass
