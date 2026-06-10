@@ -14,11 +14,27 @@ class LinkedList:
     def __repr__(self) -> str:
         return ""
 
-    def __contains__(self) -> bool:
+    def __contains__(self, value) -> bool:
+        """
+        O(n) linear Time
+        """
+        last = self.head
+        while last is not None:
+            if last.value == value:
+                return True
+            last = last.next
         return False
 
     def __len__(self) -> int:
-        return 0
+        """
+        O(n) linear time
+        """
+        last = self.head
+        count = 0
+        while last is not None:
+            count += 1
+            last = last.next
+        return count
 
     def append(self, value) -> None:
         """
@@ -36,7 +52,7 @@ class LinkedList:
 
     def prepend(self, value) -> None:
         """
-        O(1) - linear time
+        O(1) - constant time
         Add at the head of the list
         """
         first_node = Node(value=value)
@@ -44,6 +60,9 @@ class LinkedList:
         self.head = first_node
 
     def insert(self, value, index: int) -> None:
+        """
+        O(1) - linear time
+        """
         if index == 0:
             self.prepend(value)
         else:
