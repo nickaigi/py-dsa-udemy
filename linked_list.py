@@ -79,7 +79,22 @@ class LinkedList:
                 last.next = new_node
 
     def delete(self, value) -> None:
-        pass
+        temp = self.head
+
+        if temp is not None and temp.value == value:
+            self.head = temp.next
+            temp = None  # optional, free the reference
+            return
+
+        prev = None
+        while temp is not None and temp.value != value:
+            prev = temp
+            temp = temp.next
+
+        if temp is None:
+            return
+        prev.next = temp.next
+        temp = None  # optional, free the reference
 
     def pop(self, index: int) -> None:
         pass
